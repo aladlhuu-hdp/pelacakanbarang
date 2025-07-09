@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cek Resi | PBL</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+  <!-- Tombol menuju halaman login admin -->
+
+  <nav>
+  <div class="nav-left">
+    <img src="/static/hdp.png"><img/>
+      <div style="text-align: right; margin: 1px 2px;">
+    <a href="/admin" style="padding: 8px 16px; background-color: #ffffff; color: rgb(0, 0, 0); text-decoration: none; border-radius: 4px;">
+      Login Admin
+    </a>
+  </div>
+
+  </div>
+  </nav>
+
+  <!-- Konten utama -->
+  <div class="container">                                            
+    <img src="/static/hdp2.png" width="200" height="200" class="logo" alt="Logo">
+    <h1>LACAK PENGIRIMANMU!</h1>
+    <p>Masukkan nomor resi di bawah ini:</p>
+    <input type="text" id="resiInput" placeholder="Masukkan Nomor Resi">
+    <button onclick="cekResi()">Lacak Sekarang</button>
+    <div id="hasil"></div>
+  </div>
+
+  
+
+
+  <script>
+    async function cekResi() {
+      const input = document.getElementById("resiInput").value;
+      const resiList = input.split(",").map(r => r.trim()).filter(Boolean);
+
+      if (resiList.length === 0) {
+        alert("Silakan masukkan resi contoh PKG001.");
+        return;
+      }
+
+      const response = await fetch("/multi_resi", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resi_list: resiList })
+      });
+
+      const result = await response.json();
+      console.log(result);
+
+      const hasilDiv = document.getElementById("hasil");
+      if (result.status === "success") {
+        let html = `<h2>Hasil Tracking</h2><table><tr>
+          <th>Resi</th>
+          <th>Jenis Barang </th>
+          <th>Status</th>
+          <th>Tanggal Kirim</th>
+          <th>Estimasi Tiba</th>
+          <th>Total Biaya</th>
+          <th>Telepon</th>
+          <th>Lokasi</th>
+        </tr>`;
+
+        result.tracking.forEach(item => {
+          let tanggalFormatted = "-";
+          if (item.tanggal_kirim) {
+            const tanggalKirim = new Date(item.tanggal_kirim);
+            tanggalFormatted = tanggalKirim.toLocaleDateString('id-ID');
+          }
+          let estimasiFormatted = "-";
+          if (item.estimasi_tiba) {
+            const estimasiDate = new Date(item.estimasi_tiba);
+            estimasiFormatted = estimasiDate.toLocaleDateString('id-ID');
+          }
+      
+          html += `<tr>
+          <td>${item.package_id || '-'}</td>
+          <td>${item.jenis_barang || '-'}</td>
+          <td>${item.status_paket || '-'}</td>
+          <td>${tanggalFormatted}</td>
+          <td>${estimasiFormatted}</td>
+          <td>${item.biaya_pengiriman || '-'}</td>
+          <td>${item.no_telepon || '-'}</td>
+          <td>${item.alamat || '-'}</td>
+        </tr>`;
+      });
+        html += `</table>`;
+        hasilDiv.innerHTML = html;
+      } else {
+        hasilDiv.innerHTML = `<p style="color:red;">${result.message}</p>`;
+      }
+    }
+
+    async function loginAdmin(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+      });
+
+      const result = await response.json();
+      const statusDiv = document.getElementById("loginStatus");
+
+      if (result.status === "success") {
+        statusDiv.innerHTML = `<p style="color:green;">Login berhasil! Menuju <a href="/admin">Admin Panel</a></p>`;
+      } else {
+        statusDiv.innerHTML = `<p style="color:red;">Login gagal. Coba lagi.</p>`;
+      }
+    }
+
+        async function loginAdmin(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+      });
+
+      const result = await response.json();
+      const statusDiv = document.getElementById("loginStatus");
+
+      if (result.status === "success") {
+        statusDiv.innerHTML = `<p style="color:green;">Login berhasil! Menuju <a href="/admin">Admin Panel</a></p>`;
+      } else {
+        statusDiv.innerHTML = `<p style="color:red;">Login gagal. Coba lagi.</p>`;
+      }
+    }
+  </script>
+  </script>
+</body>
+</html>

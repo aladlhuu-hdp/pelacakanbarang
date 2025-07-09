@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+  <style>
+   body.login-page {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #dff1ff, #000000);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  box-sizing: border-box; /* penting agar padding tidak menambah lebar total */
+}
+
+.logo {
+  width: 80px;
+  margin-bottom: 15px;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #222;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%; /* agar mengikuti lebar kontainer */
+  max-width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box; /* mencegah padding menambah lebar total */
+}
+
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.btn-primary, .btn-secondary {
+  flex: 1;
+  padding: 12px;
+  font-size: 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background-color: #000000;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #000000;
+}
+
+  </style>
+</head>
+<body class="login-page">
+  <div class="login-container">
+    <img src="/static/hdp2.png" alt="Logo Hacienda" class="logo" />
+    <h2 class="login-title">Login Admin</h2>
+    <form action="/dashboard" method="POST">
+      <input type="text" name="username" placeholder="Masukkan Username" required />
+      <input type="password" name="password" placeholder="Masukkan Password" required />
+      <div class="button-group">
+        <button type="submit" class="btn-primary">Login</button>
+      </div>
+    </form>
+  </div>
+</body>
+
+  <script>
+    async function loginAdmin() {
+      const username = document.getElementById('nias bujang').value;
+      const password = document.getElementById('ajijul95').value;
+
+      const res = await fetch('http://127.0.0.1:5000/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      });
+
+      const result = await res.json();
+      if (result.status === 'success') {
+        window.location.href = '/dashboard';
+      } else {
+        document.getElementById('login-msg').innerText = result.message;
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Admin - Hacienda Express</title>
+  <style>
+  body.admin-bg {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: url('/static/HDP.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.overlay {
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(0, 157, 255, 0.5));
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70%;
+  text-align: center;
+  color: #fff;
+}
+
+.dashboard-logo {
+  width: 90px;
+  margin-bottom: 1px;
+}
+
+.dashboard-container h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 85px;
+  font-weight: 650;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+.dashboard-buttons {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 45px;
+  width: 70%;
+  height: 22%;
+  max-width: 500px;
+}
+
+.dashboard-buttons button {
+  padding: 12px;
+  font-size: 18px;
+  font-weight: 60;
+  background-color: #0047ff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard-buttons button:hover {
+  background-color: #000000;
+}
+</style>
+</head>
+<body class="admin-bg">
+  <div class="overlay">
+    <div class="dashboard-container">
+      <img src="/template/daleman_admin/logo_umrah/logo umrah trasnparan.png" alt="Logo" class="dashboard-logo">
+      <h1>HACIENDA EXPRESS</h1>
+      <div class="dashboard-buttons">
+          <button onclick="location.href='/search'">Cari Barang</button>
+          <button onclick="location.href='/update'">Update Resi</button>
+          <button onclick="location.href='/riwayat'">Riwayat Resi</button>
+          <button onclick="location.href='/tracking'">Data Tracking</button>
+        </div>
+    </div>
+  </div>
+
+  <div id="konten-menu"></div>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>
+
+ini kode admin bar

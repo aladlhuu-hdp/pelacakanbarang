@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Riwayat Resi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #009dff;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0047ab;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="riwayat" class="section">
+  <h1>Cari Riwayat Resi</h1>
+  <input type="text" id="searchResi" placeholder="Masukkan Resi (contoh: PKG001)" />
+  <button onclick="searchRiwayatResi()">Cari</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Resi</th>
+        <th>Status</th>
+        <th>Waktu</th>
+        <th>Lokasi</th>
+      </tr>
+    </thead>
+    <tbody id="searchResult">
+      <!-- Hasil tracking akan muncul di sini -->
+    </tbody>
+  </table>
+  </div>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+  </body>
+</html>

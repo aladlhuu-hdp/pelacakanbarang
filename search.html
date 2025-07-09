@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pencarian Paket</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #009dff;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0047ab;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="search" class="section">
+  <h2>CARI NAMA DAN JENIS BARANG</h2>
+  <input type="text" id="keywordInput" placeholder="Cari berdasarkan jenis barang atau nama customer" />
+  <button onclick="searchPaket()">Cari</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Resi</th>
+        <th>Jenis Barang</th>
+        <th>Nama Customer</th>
+        <th>Telepon</th>
+      </tr>
+    </thead>
+    <tbody id="hasilPencarian">
+      <!-- hasil pencarian akan muncul di sini -->
+    </tbody>
+  </table>
+  </div>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+</body>
+</html>

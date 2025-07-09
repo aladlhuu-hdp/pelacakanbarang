@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Tracking</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #009dff;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 26px;
+      color: #333;
+    }
+
+    button {
+      padding: 10px 16px;
+      background-color: #0047ab;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0047ab;
+      color: white;
+    }
+
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="tracking" class="section">
+  <h1>📦 Data Tracking</h1>
+  <button onclick="loadTrackingLog()">🔄 Refresh Data</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Resi</th>
+        <th>Status</th>
+        <th>Waktu</th>
+        <th>Lokasi</th>
+      </tr>
+    </thead>
+    <tbody id="logPublic">
+      <!-- Data tracking akan ditampilkan di sini -->
+    </tbody>
+  </table>
+  </div>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+</body>
+</html>

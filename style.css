@@ -1,0 +1,122 @@
+    /* Background dan body */
+    body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #009dff);
+    }
+
+    /* Navbar */
+    .nav-left {
+    margin: 0;
+    background-color: #0047ab;;
+    color: white;
+    padding: 5px;
+    display: flex;
+    justify-content: left-center;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    nav img{
+    height: 50px; /* Awalnya 50px → jadi lebih ramping */
+    width: auto;
+    margin-right: 10px;
+    }
+
+    button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    font-size: 25px;
+    background-color: #0047ab;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    }
+
+    nav button:hover {
+    font-family: 'Poppins', sans-serif;                                                                                                                                                                         
+    background-color: #0047ab;
+    
+    }
+
+    .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 30px 30px 30px; /* Top padding 60px supaya tidak menabrak navbar */
+    min-height: calc(100vh - 70px); /* agar tetap proporsional */
+    }
+
+
+    .logo {
+    display: block;
+    margin: 0 auto 20px auto; /* Tengah + beri jarak bawah */
+    }
+
+
+    /* Judul Utama */
+    h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    }
+    
+    p{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    color: #000;
+    margin-top: 0px;
+    text-align: center;
+    }
+
+    /* Input Nomor Resi */
+    input[type="text"] {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 5px;
+    padding: 15px 20px;
+    border: 5px solid #0047ab;
+    border-radius: 20px;
+    width: 400px;
+    height: 30px;
+    font-size: 16px;
+    outline: none;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+    /* Hasil tracking */
+    #hasil {
+    margin-top: 30px;
+    width: 90%;
+    max-width: 1000px;
+    overflow-x: auto;
+    }
+
+    #hasil table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    }
+
+    #hasil th,
+    #hasil td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+    }
+
+    #hasil th {
+    background-color: #0047ab;
+    color: white;
+    }

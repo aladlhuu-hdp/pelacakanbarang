@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Update Status Resi</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #009dff;
+      padding: 40px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 12px;
+      font-size: 14px;
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #0047ab;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #000000;
+    }
+
+    #updateMessage {
+      font-weight: bold;
+      color: #0047ab;
+      margin-top: 10px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+    <div id="update" class="section">
+    <h1>Update Status Resi</h1>
+    <input type="text" id="inputResiUpdate" placeholder="Masukkan Nomor Resi (contoh: PKG001)">
+    <input type="text" id="inputStatusBaru" placeholder="Status Baru (contoh: Diterima)">
+    <button onclick="updateStatusResi()">Update</button>
+    <p id="updateMessage"></p>
+  </div>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+
+</body>
+</html>
