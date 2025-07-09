@@ -1,7 +1,7 @@
-# Aplikasi Tracking Pengiriman Barang
-Tugas Sistem Basis Data
-Teknik Informatika Semester 2
-Pelacakan Barang Hacienda Express
+# Delivery Tracking Application
+Database System Assignment
+Informatics Engineering Student
+Hacienda Express Delivery Tracking
 
 The main feature of this tracking system is its ability to display real-time delivery information via the tracking number. Users simply enter the tracking number provided during delivery, and the system will immediately display the item's current status, including its last location, shipping stage, and confirmation of arrival at its destination.
 
